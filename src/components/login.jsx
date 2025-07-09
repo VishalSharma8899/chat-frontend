@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
+ 
 const Login = ({ onLogin, onSwitchToRegister }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+ 
   const login = async () => {
     try {
       const res = await axios.post(`${baseUrl}/auth/login`, {
@@ -12,12 +13,13 @@ const Login = ({ onLogin, onSwitchToRegister }) => {
         password,
       });
       localStorage.setItem('token', res.data.token);
+
       onLogin(res.data.token);
     } catch (err) {
       alert('Login failed');
     }
   };
-
+console.log("dd" , `${baseUrl}`);
   return (
     <div style={styles.container}>
       <h3 style={styles.heading}>Login</h3>
