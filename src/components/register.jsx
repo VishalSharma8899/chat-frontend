@@ -7,7 +7,7 @@ const Register = ({ onSwitchToLogin }) => {
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const register = async () => {
     try {
-      await axios.post('${baseUrl}/auth/register', {
+      await axios.post(`${baseUrl}/auth/register`, {
         username,
         password,
       });

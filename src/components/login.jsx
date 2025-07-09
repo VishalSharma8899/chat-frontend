@@ -7,7 +7,7 @@ const Login = ({ onLogin, onSwitchToRegister }) => {
 
   const login = async () => {
     try {
-      const res = await axios.post('${baseUrl}/auth/login', {
+      const res = await axios.post(`${baseUrl}/auth/login`, {
         username,
         password,
       });

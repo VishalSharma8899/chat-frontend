@@ -19,7 +19,7 @@ const ChatBox = ({ token }) => {
 
   useEffect(() => {
     axios
-      .get("${baseUrl}/auth/users", {
+      .get(`${baseUrl}/auth/users`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -31,7 +31,7 @@ const ChatBox = ({ token }) => {
   }, [token]);
 
   useEffect(() => {
-    const s = io("${baseUrl}", { auth: { token } });
+    const s = io(`${baseUrl}`, { auth: { token } });
     setSocket(s);
 
     s.on("connect", () => console.log(" Socket connected:", s.id));

@@ -257,7 +257,7 @@ const baseUrl = import.meta.env.VITE_API_BASE_URL;
   useEffect(() => {
     let isMounted = true;
 
-    const socket = io("${baseUrl}", {
+    const socket = io(`${baseUrl}`, {
       auth: { token },
     });
     socketRef.current = socket;
