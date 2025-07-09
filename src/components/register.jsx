@@ -4,10 +4,10 @@ import axios from 'axios';
 const Register = ({ onSwitchToLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const register = async () => {
     try {
-      await axios.post('http://localhost:4000/auth/register', {
+      await axios.post('${baseUrl}/auth/register', {
         username,
         password,
       });

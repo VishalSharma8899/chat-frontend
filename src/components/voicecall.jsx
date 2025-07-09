@@ -1,7 +1,7 @@
  
 import React, { useEffect, useRef, useState } from 'react';
 import { getSocket, connectSocket } from './socket';
-
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 const VoiceCall = ({ currentUserId, targetUserId, token }) => {
   const localAudioRef = useRef(null);
   const remoteAudioRef = useRef(null);

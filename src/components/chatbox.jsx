@@ -3,6 +3,7 @@ import io from "socket.io-client";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import CallPopup from "./CallPopup";
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const ChatBox = ({ token }) => {
   const currentUser = jwtDecode(token);
@@ -18,7 +19,7 @@ const ChatBox = ({ token }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/auth/users", {
+      .get("${baseUrl}/auth/users", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -30,7 +31,7 @@ const ChatBox = ({ token }) => {
   }, [token]);
 
   useEffect(() => {
-    const s = io("http://localhost:4000", { auth: { token } });
+    const s = io("${baseUrl}", { auth: { token } });
     setSocket(s);
 
     s.on("connect", () => console.log(" Socket connected:", s.id));
@@ -71,7 +72,7 @@ const ChatBox = ({ token }) => {
   useEffect(() => {
     if (!selectedUser) return;
     axios
-      .get(`http://localhost:4000/api/get/${selectedUser._id}`, {
+      .get(`${baseUrl}/api/get/${selectedUser._id}`, {
         headers: { Authorization: token },
       })
       .then((res) => setMessages(res.data));

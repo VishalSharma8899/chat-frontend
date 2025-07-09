@@ -26,7 +26,7 @@
 //   useEffect(() => {
 //     let isMounted = true;
 
-//     const socket = io("http://localhost:4000", {
+//     const socket = io("${baseUrl}", {
 //       auth: { token },
 //     });
 //     socketRef.current = socket;
@@ -253,11 +253,11 @@ const VideoCall = ({ currentUserId, targetUserId, token }) => {
   const [callStarted, setCallStarted] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [micOn, setMicOn] = useState(true); // 🎤 Mic toggle state
-
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
   useEffect(() => {
     let isMounted = true;
 
-    const socket = io("http://localhost:4000", {
+    const socket = io("${baseUrl}", {
       auth: { token },
     });
     socketRef.current = socket;

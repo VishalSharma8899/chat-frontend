@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 const Login = ({ onLogin, onSwitchToRegister }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const login = async () => {
     try {
-      const res = await axios.post('http://localhost:4000/auth/login', {
+      const res = await axios.post('${baseUrl}/auth/login', {
         username,
         password,
       });
